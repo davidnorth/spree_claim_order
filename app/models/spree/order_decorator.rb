@@ -1,4 +1,4 @@
-Order.class_eval do
+Spree::Order.class_eval do
 
   def assign_to_rightful_owner
     return true if user.email == email

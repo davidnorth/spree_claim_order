@@ -13,7 +13,7 @@ module Devise
       protected
 
       def confirmation_required?
-        User.devise_modules.include?(:confirmable) && !unclaimed_orders.empty? && !confirmed?
+        Spree::User.devise_modules.include?(:confirmable) && !unclaimed_orders.empty? && !confirmed?
       end
 
     end

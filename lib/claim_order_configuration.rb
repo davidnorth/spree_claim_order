@@ -1,4 +1,4 @@
-class ClaimOrderConfiguration < Configuration
+class ClaimOrderConfiguration < Spree::Preferences::Configuration
 
   # Setting this to false will allow you to bypass email confirmation requirements
   # and orders will automatically be associated with existing user accounts even

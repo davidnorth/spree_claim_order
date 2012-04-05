@@ -1,4 +1,4 @@
-User.class_eval do
+Spree::User.class_eval do
 
   if Spree::ClaimOrder::Config[:require_email_confirmation]
     devise :confirmable
@@ -12,13 +12,13 @@ User.class_eval do
   before_create :set_confirmation_sent_at, :if => Proc.new{ |user| unclaimed_orders.empty? }
 
   def unclaimed_orders
-    orders = Order.where("orders.email = ? AND orders.completed_at IS NOT NULL AND orders.user_id != ?", email, id)
+    Spree::Order.where("spree_orders.email = ? AND spree_orders.completed_at IS NOT NULL AND spree_orders.user_id != ?", email, id)
   end
 
   # overrides User.anonymous! in spree_auth
   def self.anonymous!
-    token = User.generate_token(:persistence_token)
-    user = User.create(:email => "#{token}@example.net", :password => token, :password_confirmation => token, :persistence_token => token)
+    token = generate_token(:persistence_token)
+    user = create(:email => "#{token}@example.net", :password => token, :password_confirmation => token, :persistence_token => token)
     user.confirm! if Spree::ClaimOrder::Config[:require_email_confirmation]
     user
   end
