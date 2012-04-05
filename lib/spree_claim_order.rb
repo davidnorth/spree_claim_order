@@ -1,5 +1,4 @@
 require 'spree_core'
-require 'spree_claim_order_hooks'
 
 module SpreeClaimOrder
   class Engine < Rails::Engine
