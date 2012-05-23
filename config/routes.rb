@@ -1,4 +1,4 @@
-Rails.application.routes.draw do
+Spree::Core::Engine.routes.append do
 
   devise_scope :user do
     post "/user_confirmation" => "user_confirmations#create", :as => :create_user_confirmation

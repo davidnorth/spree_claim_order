@@ -1,4 +1,4 @@
-class UserMailer < ActionMailer::Base
+Spree::UserMailer.class_eval do
 
   default_url_options[:host] = Spree::Config[:site_url]
 
