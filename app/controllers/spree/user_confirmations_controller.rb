@@ -1,7 +1,6 @@
 class Spree::UserConfirmationsController < Devise::ConfirmationsController
 
   helper 'spree/users', 'spree/base'
-  ssl_required
 
   def create
     if current_user.confirmed?
